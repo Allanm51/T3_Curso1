@@ -1,14 +1,14 @@
-﻿using Alura.Adopet.Console.Servicos;
-using System.Threading.Tasks;
+
+using Alura.Adopet.Console.Servicos;
 
 namespace Alura.Adopet.Testes
 {
     public class HttpClientPetTest
     {
         [Fact]
-        public async Task ListaPetsDeveRetornarUmaListaVazia()
+        public async Task ListaPetsDeveRetornarUmaListaNaoVazia()
         {
-            //Arange
+            //Arrange
             var clientePet = new HttpClientPet();
 
             //Act
@@ -23,10 +23,12 @@ namespace Alura.Adopet.Testes
         public async Task QuandoAPIForaDeveRetornarUmaExcecao()
         {
             //Arrange
-            var clientePet = new HttpClientPet(uri:"http://localhost:5000");
+            var clientePet = new HttpClientPet(uri:"http://localhost:1111");
 
             //Act+Assert
             await Assert.ThrowsAnyAsync<Exception>(()=> clientePet.ListPetsAsync());
+
         }
+
     }
 }
